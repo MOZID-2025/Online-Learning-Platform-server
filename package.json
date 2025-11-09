@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongodb": "^7.0.0"
+  },
+  "name": "online-learning-platform-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MOZID-2025/Online-Learning-Platform-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MOZID-2025/Online-Learning-Platform-server/issues"
+  },
+  "homepage": "https://github.com/MOZID-2025/Online-Learning-Platform-server#readme",
+  "description": ""
+}
