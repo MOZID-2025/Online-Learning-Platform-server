@@ -25,7 +25,6 @@ async function run() {
     await client.connect();
     const db = client.db("Online-Learning-Platform-db");
     const coursesCollection = db.collection("Courses");
-
     //find
     //findOne
     app.get("/courses", async (req, res) => {
@@ -91,7 +90,6 @@ async function run() {
     //features 6 course
     //get
     //find
-
     app.get("/features-course", async (req, res) => {
       const result = await coursesCollection.find().sort().limit(6).toArray();
       res.send(result);
@@ -104,7 +102,6 @@ async function run() {
     );
   } finally {
     // Ensures that the client will close when you finish/error
-    // await client.close();
   }
 }
 run().catch(console.dir);
