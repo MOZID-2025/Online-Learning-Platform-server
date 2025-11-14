@@ -91,7 +91,6 @@ async function run() {
 
     //features 6 course
     //get
-    //find
 
     app.get("/features-course", async (req, res) => {
       const result = await coursesCollection.find().sort().limit(6).toArray();
