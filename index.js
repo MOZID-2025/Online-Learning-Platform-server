@@ -11,6 +11,7 @@ const uri =
   "mongodb+srv://Online-Learning-Platform-db:LtJ549iPMjmI8s3n@project-1.3gjxivd.mongodb.net/?appName=Project-1";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
