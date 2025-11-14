@@ -36,7 +36,6 @@ async function run() {
     app.get("/courses/:id", async (req, res) => {
       const { id } = req.params;
       const result = await coursesCollection.findOne({ _id: new ObjectId(id) });
-
       res.send({
         success: true,
         result,
@@ -101,7 +100,7 @@ async function run() {
 
     await client.db("admin").command({ ping: 1 });
     console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
+      "Pinged your deployment. You successfully connected to MongoDB"
     );
   } finally {
     // Ensures that the client will close when you finish/error
