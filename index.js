@@ -43,17 +43,6 @@ async function run() {
       res.send(result);
     });
 
-    // enrol course get
-    // app.get("/my-enroll-courses", async (req, res) => {
-    //   const email = req.query.email;
-
-    //   const result = await courseEnrollCollection
-    //     .find({ email: email })
-    //     .toArray();
-
-    //   res.send(result);
-    // });
-
     app.get("/my-enroll-courses", async (req, res) => {
       const email = req.query.email;
 
