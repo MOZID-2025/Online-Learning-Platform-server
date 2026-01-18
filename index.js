@@ -22,13 +22,55 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
     const db = client.db("Online-Learning-Platform-db");
     const coursesCollection = db.collection("Courses");
+    const courseEnrollCollection = db.collection("EnrolledCourses");
+
+    // enrol course post
+    app.post("/my-enroll-courses", async (req, res) => {
+      const enrollCourse = req.body;
+
+      const alreadyEnrolled = await courseEnrollCollection.findOne({
+        courseId: enrollCourse.courseId,
+        email: enrollCourse.email,
+      });
+
+      if (alreadyEnrolled) {
+        return res.send({ message: "already enrolled" });
+      }
+
+      const result = await courseEnrollCollection.insertOne(enrollCourse);
+      res.send(result);
+    });
+
+    // enrol course get
+    // app.get("/my-enroll-courses", async (req, res) => {
+    //   const email = req.query.email;
+
+    //   const result = await courseEnrollCollection
+    //     .find({ email: email })
+    //     .toArray();
+
+    //   res.send(result);
+    // });
+
+    app.get("/my-enroll-courses", async (req, res) => {
+      const email = req.query.email;
+
+      const result = await courseEnrollCollection.find({ email }).toArray();
+      res.send(result);
+    });
+
     //find
     //findOne
     app.get("/courses", async (req, res) => {
       const result = await coursesCollection.find().toArray();
+      res.send(result);
+    });
+
+    app.get("/my-courses", async (req, res) => {
+      const email = req.query.email;
+      const result = await coursesCollection.find({ email: email }).toArray();
       res.send(result);
     });
 
@@ -96,7 +138,6 @@ async function run() {
       console.log(result);
     });
 
-    await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB"
     );
